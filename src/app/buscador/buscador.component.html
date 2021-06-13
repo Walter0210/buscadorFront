@@ -11,7 +11,7 @@
                                             <input [(ngModel)]="busqueda" type="text" id="filtro" name="filtro" class="form-control"/>
                                             <div class="input-group-append">
                                                 <button id="btnSearch" (click)='getSearch()' class="btn waves-effect waves-light btn-custom"><i class="fa fa-search mr-1"></i> Buscar</button>
-                                                <button type="button" class="btn btn-secondary"><i class="fas fa-plus"></i> Archivo</button>
+                                                <button type="button" class="btn btn-secondary" (click)='indexar()' ><i class="fas fa-plus"></i> Indexar</button>
                                             </div>
                                     </div>
                                 </form>
@@ -54,7 +54,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                                <button type="button" class="btn btn-primary"  download="file.txt">Descargar archivo</button>
+                                                <a role="button" class="btn btn-primary" [href]="urlDescarga" [download]="nombreDocClick">Descargar archivo</a>
                                                 </div>
                                             </div>
                                             </div>

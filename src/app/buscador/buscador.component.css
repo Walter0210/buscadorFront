@@ -23,11 +23,6 @@ body{
 .text-success {
     color: #0acf97!important;
 }
-a {
-    color: #007bff;
-    text-decoration: none;
-    background-color: transparent;
-}
 .btn-custom {
     background-color: #02c0ce;
     border-color: #02c0ce;

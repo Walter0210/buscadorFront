@@ -18,6 +18,4 @@ export class ArchivoService {
     return this.httpclient.get(this.url + id, {responseType:'text'});
   }
 
-
-
 }

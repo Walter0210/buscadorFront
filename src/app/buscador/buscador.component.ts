@@ -4,6 +4,7 @@ import { ArchivoService } from '../services/archivo.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { iDocumento } from '../Modelos/iDocumento'
 import {DocumentosService} from '../services/documentos.service'
+import {IndexarService} from '../services/indexar.service'
 
 
 @Component({
@@ -17,7 +18,7 @@ export class BuscadorComponent implements OnInit {
   listDoc: any = [];
   bodyDocClick: string = '';
   nombreDocClick: string = '';
-  fileUrl: SafeResourceUrl = '';
+  urlDescarga: SafeResourceUrl = '';
   todosDocumentos: any = [];
   total = 0;
   
@@ -26,7 +27,9 @@ export class BuscadorComponent implements OnInit {
   constructor(
     private buscador: BuscadorService,
     private archivo: ArchivoService,
-    private files: DocumentosService
+    private files: DocumentosService,
+    private indexador: IndexarService,
+    private sanitizer: DomSanitizer,
   ) { }
 
   ngOnInit(): void {}
@@ -48,5 +51,15 @@ export class BuscadorComponent implements OnInit {
 
   getAllFiles(){
     this.files.getAll().subscribe((res)=>{this.todosDocumentos = res; console.log(res), this.total = this.todosDocumentos.length})
+  }
+
+  indexar(){
+    this.indexador.indexar().subscribe((res:any)=>alert(res['respTxt']))
+  }
+
+  downloadFile(){
+    const data = this.bodyDocClick;
+    const blob = new Blob([data], { type: 'application/octet-stream' });
+    this.urlDescarga = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
   }
 }
