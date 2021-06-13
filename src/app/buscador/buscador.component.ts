@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
+import { BuscadorService } from '../services/buscador.service';
+import { iDocumento } from '../Modelos/iDocumento'
 
 @Component({
   selector: 'app-buscador',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./buscador.component.css']
 })
 export class BuscadorComponent implements OnInit {
-
-  constructor() { }
+  expresionFiltro = ''
+  resultado: boolean = false;
+  muchosDocumentos: any = [];
+  constructor(private buscador: BuscadorService) { }
 
   ngOnInit(): void {
+
   }
 
+  getSearch(): void {
+    this.resultado = true;
+    this.buscador.get(this.expresionFiltro).subscribe((res) => { this.muchosDocumentos = res; console.log(res) })
+    
+
+  }
 }
