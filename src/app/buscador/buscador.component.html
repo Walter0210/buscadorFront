@@ -54,7 +54,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                                <a role="button" class="btn btn-primary" [href]="urlDescarga" [download]="nombreDocClick">Descargar archivo</a>
+                                                <a role="button" class="btn btn-primary" [href]="urlDescarga" [download]="nombreDocClick" (click)='downloadFile()' >Descargar archivo</a>
                                                 </div>
                                             </div>
                                             </div>
