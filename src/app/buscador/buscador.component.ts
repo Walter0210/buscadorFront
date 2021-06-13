@@ -3,6 +3,8 @@ import { BuscadorService } from '../services/buscador.service';
 import { ArchivoService } from '../services/archivo.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { iDocumento } from '../Modelos/iDocumento'
+import {DocumentosService} from '../services/documentos.service'
+
 
 @Component({
   selector: 'app-buscador',
@@ -16,13 +18,15 @@ export class BuscadorComponent implements OnInit {
   bodyDocClick: any;
   nombreDocClick: string = '';
   fileUrl: SafeResourceUrl = '';
+  todosDocumentos: any = [];
+  total = 0;
   
   
 
   constructor(
     private buscador: BuscadorService,
     private archivo: ArchivoService,
-
+    private files: DocumentosService
   ) { }
 
   ngOnInit(): void {}
@@ -40,5 +44,9 @@ export class BuscadorComponent implements OnInit {
   loadModal(nombreDoc:string, preview:string):void {
     this.nombreDocClick = nombreDoc;
     this.bodyDocClick = preview;
+  }
+  getAllFiles(){
+    this.files.getAll().subscribe((res)=>{this.listDoc = res; console.log(res), this.total = this.listDoc.length})
+    
   }
 }
