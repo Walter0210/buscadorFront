@@ -86,6 +86,10 @@
                                     </div>
                                 </div>
                                 <div>
+                                    <div *ngFor="let documento of todosDocumentos" class="search-item">
+                                        <h4 class="mb-1"><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)='loadModal(documento.nombreArchivo, documento.primerasLineas, documento.idDocumento)'>{{documento.nombreArchivo}}</a></h4>
+                                        <p class="mb-0 text-muted">{{documento.primerasLineas}}</p>
+                                    </div>
                                     <strong>Cantidad total de documentos: {{total}}</strong>
                                 </div>
                             </div>

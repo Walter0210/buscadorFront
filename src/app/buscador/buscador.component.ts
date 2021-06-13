@@ -47,6 +47,6 @@ export class BuscadorComponent implements OnInit {
   }
 
   getAllFiles(){
-    this.files.getAll().subscribe((res)=>{this.listDoc = res; console.log(res), this.total = this.listDoc.length})
+    this.files.getAll().subscribe((res)=>{this.todosDocumentos = res; console.log(res), this.total = this.todosDocumentos.length})
   }
 }
