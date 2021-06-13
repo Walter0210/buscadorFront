@@ -15,7 +15,7 @@ export class BuscadorComponent implements OnInit {
   busqueda: string = ''
   resultado: boolean = false;
   listDoc: any = [];
-  bodyDocClick: any;
+  bodyDocClick: string = '';
   nombreDocClick: string = '';
   fileUrl: SafeResourceUrl = '';
   todosDocumentos: any = [];
@@ -37,16 +37,16 @@ export class BuscadorComponent implements OnInit {
   }
 
   getTextoArchivo(idArchivo:number):void {
-    this.archivo.getArchivo(idArchivo).subscribe((res) => { this.bodyDocClick = res; console.log(this.bodyDocClick) })
+    this.archivo.getArchivo(idArchivo).subscribe((res) => { this.bodyDocClick = atob(res); console.log(this.bodyDocClick) })
     
   }
 
-  loadModal(nombreDoc:string, preview:string):void {
+  loadModal(nombreDoc:string, preview:string, id:number):void {
     this.nombreDocClick = nombreDoc;
-    this.bodyDocClick = preview;
+    this.getTextoArchivo(id);
   }
+
   getAllFiles(){
     this.files.getAll().subscribe((res)=>{this.listDoc = res; console.log(res), this.total = this.listDoc.length})
-    
   }
 }

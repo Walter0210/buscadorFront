@@ -15,9 +15,9 @@ export class ArchivoService {
   }
 
   getArchivo(id : number) {
-    return this.httpclient.get(this.url + id);
+    return this.httpclient.get(this.url + id, {responseType:'text'});
   }
 
 
-  
+
 }
