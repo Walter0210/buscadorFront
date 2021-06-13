@@ -40,7 +40,7 @@ export class BuscadorComponent implements OnInit {
   }
 
   getTextoArchivo(idArchivo:number):void {
-    this.archivo.getArchivo(idArchivo).subscribe((res) => { this.bodyDocClick = atob(res); console.log(this.bodyDocClick) })
+    this.archivo.getArchivo(idArchivo).subscribe((res) => { this.bodyDocClick = atob(res); })
     
   }
 
@@ -50,7 +50,7 @@ export class BuscadorComponent implements OnInit {
   }
 
   getAllFiles(){
-    this.files.getAll().subscribe((res)=>{this.todosDocumentos = res; console.log(res), this.total = this.todosDocumentos.length})
+    this.files.getAll().subscribe((res)=>{this.todosDocumentos = res; this.total = this.todosDocumentos.length})
   }
 
   indexar(){
@@ -59,6 +59,7 @@ export class BuscadorComponent implements OnInit {
 
   downloadFile(){
     const data = this.bodyDocClick;
+    console.log(this.bodyDocClick);
     const blob = new Blob([data], { type: 'application/octet-stream' });
     this.urlDescarga = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
   }
