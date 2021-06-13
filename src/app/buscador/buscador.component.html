@@ -11,7 +11,7 @@
                                             <input [(ngModel)]="expresionFiltro" type="text" id="filtro" name="filtro" class="form-control"/>
                                             <div class="input-group-append">
                                                 <button id="btnSearch" (click)='getSearch()' class="btn waves-effect waves-light btn-custom"><i class="fa fa-search mr-1"></i> Buscar</button>
-                                                <button type="button" class="btn btn-secondary"><i class="fas fa-plus"></i> Archivo</button>
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uploadmodal"><i class="fas fa-plus"></i> Archivo</button>
                                             </div>
                                     </div>
                                 </form>
@@ -65,9 +65,21 @@
             </div>
         </div>
     </div>
-    
+    <div class="modal fade" id="uploadmodal" tabindex="-1" aria-labelledby="uploadmodallabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="uploadmodallabel">Subir Archivo</h5>
+            </div>
+            <div class="modal-body">
+              <p>Archivo.txt</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button id="toastbtn" type="button" class="btn btn-primary" data-bs-dismiss="modal" >Save changes</button>
+            </div>
+          </div>
+        </div>
+    </div> 
+
 </div>
-<script>
-
-</script>
-

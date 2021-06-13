@@ -4,6 +4,7 @@ import { iDocumento } from '../Modelos/iDocumento';
 import {DocumentosService} from '../services/documentos.service'
 
 
+
 @Component({
   selector: 'app-buscador',
   templateUrl: './buscador.component.html',
@@ -15,11 +16,13 @@ export class BuscadorComponent implements OnInit {
   resultado: boolean = false;
   muchosDocumentos: any = [];
   todosDocumentos: any = [];
+  
   constructor(private buscador: BuscadorService,
               private files: DocumentosService ) { };
   ngOnInit(): void {
 
   }
+
   getSearch(): void {
     this.resultado = true;
     this.buscador.get(this.expresionFiltro).subscribe((res) => { this.muchosDocumentos = res; console.log(res) })
