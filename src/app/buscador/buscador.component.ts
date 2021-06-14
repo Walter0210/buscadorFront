@@ -19,6 +19,7 @@ export class BuscadorComponent implements OnInit {
   bodyDocClick: string = '';
   nombreDocClick: string = '';
   urlDescarga: SafeResourceUrl = '';
+
   todosDocumentos: any = [];
   total = 0;
   
